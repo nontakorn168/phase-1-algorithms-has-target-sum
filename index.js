@@ -1,5 +1,22 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
+  const seenNumbers = new Set();
+
+  // วนลูปผ่านทุกตัวเลขใน array
+  for (const number of array) {
+    const complement = target - number;
+    
+    // ถ้าเจอ complement ใน Set แปลว่ามีคู่ที่บวกกันได้ target
+    if (seenNumbers.has(complement)) {
+      return true;
+    }
+    
+    // เก็บค่า number ลงใน Set เพื่อใช้ในการเปรียบเทียบกับตัวเลขตัวถัดไป
+    seenNumbers.add(number);
+  }
+
+  // ถ้าไม่มีคู่ใด ๆ ที่บวกกันได้ target ก็คืนค่า false
+  return false;
 }
 
 /* 
@@ -8,6 +25,7 @@ function hasTargetSum(array, target) {
 
 /* 
   Add your pseudocode here
+for (let i = 0; )
 */
 
 /*
